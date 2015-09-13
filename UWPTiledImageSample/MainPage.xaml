@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="UWPTiledImageSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPTiledImageSample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    RequestedTheme="Dark"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+       <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        
+        <local:ImageTile Source="ms-appx:///Assets/transparent.png"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Width="{Binding Value, ElementName=widthBar, Mode=OneWay}"
+                         Height="{Binding Value, ElementName=heightBar, Mode=OneWay}"/>
+        
+        <Slider x:Name="widthBar"
+                Grid.Row="1"
+                Header="Width"
+                Minimum="20"
+                Maximum="400"
+                MaxWidth="320"
+                Value="48"/>
+        
+        <Slider x:Name="heightBar"
+                Grid.Row="2"
+                Header="Height"
+                Minimum="20"
+                Maximum="400"
+                MaxWidth="320"
+                Value="48"/>
+    </Grid>
+</Page>
