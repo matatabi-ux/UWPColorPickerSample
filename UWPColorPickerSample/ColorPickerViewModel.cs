@@ -361,7 +361,11 @@ namespace UWPColorPickerSample
             var hsv = ToHSV(old);
             hsv[0] = (float)(this.colorSpectrumPoint * 360f / PickerHeight);
             var updated = FromHsv(hsv[0], hsv[1], hsv[2]);
+            updated.A = old.A;
             this.UpdateColor(updated);
+
+            var h = FromHsv(hsv[0], 1f, 1f);
+            this.HueColor = string.Format("#FF{0:X2}{1:X2}{2:X2}", h.R, h.G, h.B);
         }
 
         /// <summary>
@@ -372,6 +376,7 @@ namespace UWPColorPickerSample
             var old = (Color)Converter.Convert(this.color, typeof(Color), null, null);
             var hsv = ToHSV(old);
             var updated = FromHsv(hsv[0], (float)(this.pickPointX / PickerWidth), 1f - (float)(this.pickPointY / PickerHeight));
+            updated.A = old.A;
             this.UpdateColor(updated);
         }
     }
