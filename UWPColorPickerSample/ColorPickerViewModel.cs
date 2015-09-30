@@ -373,7 +373,7 @@ namespace UWPColorPickerSample
         /// </summary>
         public void OnPickPointChanged()
         {
-            var old = (Color)Converter.Convert(this.color, typeof(Color), null, null);
+            var old = (Color)Converter.Convert(this.hueColor, typeof(Color), null, null);
             var hsv = ToHSV(old);
             var updated = FromHsv(hsv[0], (float)(this.pickPointX / PickerWidth), 1f - (float)(this.pickPointY / PickerHeight));
             updated.A = old.A;
